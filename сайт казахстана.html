@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ВВП Казахстана — статистика</title>
+<style>
+:root{
+  --bg:#07111f; --panel:#0d1b2e; --panel2:#10243b; --text:#eef6ff;
+  --muted:#91a5ba; --accent:#37d39a; --accent2:#5aa7ff; --line:#1c3550;
+}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 20% 0%,#12304d 0,#07111f 42%);color:var(--text);font:16px/1.5 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.container{max-width:1150px;margin:auto;padding:28px 20px 60px}
+header{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:28px}
+.kicker{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+h1{font-size:clamp(30px,5vw,54px);line-height:1.05;margin:7px 0 8px}
+.subtitle{color:var(--muted);max-width:700px}
+.badge{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:#0b1929;color:#b9cbe0;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:linear-gradient(145deg,rgba(16,36,59,.96),rgba(9,23,39,.96));border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 15px 45px #0003}
+.label{color:var(--muted);font-size:13px}.value{font-size:28px;font-weight:800;margin:7px 0}.change{color:var(--accent);font-size:13px}
+.section{margin-top:18px}.section h2{font-size:22px;margin:0 0 12px}
+.two{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
+.chartbox{height:330px}.bars{display:flex;align-items:end;height:245px;gap:16px;padding:20px 10px 5px;border-bottom:1px solid var(--line)}
+.barwrap{flex:1;height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:8px}
+.bar{width:min(90px,70%);border-radius:10px 10px 2px 2px;background:linear-gradient(180deg,var(--accent2),#2874cf);min-height:10px}
+.bar.green{background:linear-gradient(180deg,var(--accent),#15986d)}
+.year{color:var(--muted);font-size:13px}.barval{font-weight:700;font-size:13px}
+.donut{height:245px;display:grid;place-items:center}
+svg{max-width:230px;width:100%}
+.legend{display:grid;gap:10px;margin-top:8px}.legend div{display:flex;justify-content:space-between;color:#c8d5e3}.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:8px}
+table{width:100%;border-collapse:collapse}th,td{padding:12px 8px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--muted);font-size:13px}
+footer{margin-top:28px;color:var(--muted);font-size:12px}.source{color:#a9cfff}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}header{display:block}.badge{display:inline-block;margin-top:15px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <div>
+    <div class="kicker">Экономика • Казахстан</div>
+    <h1>ВВП Казахстана</h1>
+    <div class="subtitle">Интерактивная мини-панель со свежими официальными данными за 2025 год и сравнением с 2024 годом.</div>
+  </div>
+  <div class="badge">Данные: 2025, предварительные</div>
+</header>
+
+<section class="grid">
+  <div class="card"><div class="label">ВВП, текущие цены</div><div class="value">159,58 трлн ₸</div><div class="change">+6,5% в реальном выражении</div></div>
+  <div class="card"><div class="label">ВВП в долларах</div><div class="value">$305,96 млрд</div><div class="change">по среднегодовому курсу НБК</div></div>
+  <div class="card"><div class="label">ВВП на душу населения</div><div class="value">≈ $14 692</div><div class="change">оценка Всемирного банка, 2025</div></div>
+  <div class="card"><div class="label">Рост ВВП</div><div class="value">6,5%</div><div class="change">2025 к 2024, реальный рост</div></div>
+</section>
+
+<section class="section two">
+  <div class="card">
+    <h2>ВВП: 2024 → 2025</h2>
+    <div class="chartbox">
+      <div class="bars">
+        <div class="barwrap"><div class="barval">136,69 трлн ₸</div><div class="bar" style="height:86%"></div><div class="year">2024</div></div>
+        <div class="barwrap"><div class="barval">159,58 трлн ₸</div><div class="bar green" style="height:100%"></div><div class="year">2025</div></div>
+      </div>
+      <p class="subtitle">Номинальный объём вырос в тенге; для оценки реального роста используется индекс физического объёма.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Структура ВВП, 2025</h2>
+    <div class="donut">
+      <svg viewBox="0 0 42 42" aria-label="Структура ВВП">
+        <circle cx="21" cy="21" r="15.915" fill="none" stroke="#18304a" stroke-width="7"/>
+        <circle cx="21" cy="21" r="15.915" fill="none" stroke="#37d39a" stroke-width="7"
+          stroke-dasharray="57.7 42.3" stroke-dashoffset="25" pathLength="100"/>
+        <circle cx="21" cy="21" r="15.915" fill="none" stroke="#5aa7ff" stroke-width="7"
+          stroke-dasharray="36.1 63.9" stroke-dashoffset="-32.7" pathLength="100"/>
+        <text x="21" y="22.5" text-anchor="middle" fill="white" font-size="5">2025</text>
+      </svg>
+    </div>
+    <div class="legend">
+      <div><span><i class="dot" style="background:#37d39a"></i>Услуги</span><b>57,7%</b></div>
+      <div><span><i class="dot" style="background:#5aa7ff"></i>Производство товаров</span><b>36,1%</b></div>
+      <div><span><i class="dot" style="background:#18304a"></i>Остальное / налоги</span><b>6,2%</b></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="card">
+    <h2>2026: данные по состоянию на июль</h2>
+    <p class="subtitle">Полного годового ВВП за июль ещё нет: ВВП публикуется за периоды (например, январь–март), поэтому здесь показаны последние доступные на июль макроэкономические показатели.</p>
+    <div class="grid" style="margin-top:14px">
+      <div class="card"><div class="label">Рост ВВП, январь–июнь 2026</div><div class="value">4,1%</div><div class="change">в реальном выражении к январю–июню 2025</div></div>
+      <div class="card"><div class="label">Реальный сектор</div><div class="value">5,1%</div><div class="change">рост за первое полугодие 2026</div></div>
+      <div class="card"><div class="label">Сфера услуг</div><div class="value">3,5%</div><div class="change">рост за первое полугодие 2026</div></div>
+      <div class="card"><div class="label">Добыча нефти</div><div class="value">−8,4%</div><div class="change">к соответствующему периоду 2025</div></div>
+    </div>
+    <div style="margin-top:18px;padding-top:15px;border-top:1px solid var(--line)">
+      <div class="label">Последний опубликованный ВВП в текущих ценах</div>
+      <div class="value">34,10 трлн ₸</div>
+      <div class="change">январь–март 2026, отчётные данные</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+<div class="card">
+<h2>Крупнейшие отрасли по валовой добавленной стоимости, 2025</h2>
+<table>
+<thead><tr><th>Отрасль</th><th>Доля в ВВП</th><th>Валовая добавленная стоимость</th></tr></thead>
+<tbody>
+<tr><td>Промышленность</td><td>26,6%</td><td>42,22 трлн ₸</td></tr>
+<tr><td>Обрабатывающая промышленность</td><td>13,0%</td><td>20,47 трлн ₸</td></tr>
+<tr><td>Горнодобыча и разработка карьеров</td><td>11,9%</td><td>18,99 трлн ₸</td></tr>
+<tr><td>Сельское, лесное и рыбное хозяйство</td><td>3,8%</td><td>6,08 трлн ₸</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section class="section grid">
+  <div class="card"><div class="label">Конечное потребление</div><div class="value">67,7%</div><div class="change">структура использования ВВП</div></div>
+  <div class="card"><div class="label">Валовое накопление</div><div class="value">29,0%</div><div class="change">структура использования ВВП</div></div>
+  <div class="card"><div class="label">Чистый экспорт</div><div class="value">3,3%</div><div class="change">структура использования ВВП</div></div>
+  <div class="card"><div class="label">ВВП 2024</div><div class="value">136,69 трлн ₸</div><div class="change">уточнённые данные</div></div>
+</section>
+
+<footer>
+  Источники: <span class="source">Бюро национальной статистики Республики Казахстан</span> — ВВП за 2025 год; 
+  <span class="source">World Bank</span> — международные показатели ВВП. 
+  Данные 2025 года Бюро национальной статистики помечает как предварительные. Показатели 2026 года отражают доступную на июль 2026 информацию: январь–июнь для темпов роста и январь–март для ВВП в текущих ценах.
+</footer>
+</div>
+</body>
+</html>
