@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ВВП Казахстана - Статистика</title>
   <style>
-    /* 1. Восстановленные CSS-переменные для темной темы */
     :root {
       --bg: #050d17;
       --text: #f1f5f9;
@@ -15,7 +14,6 @@
       --accent2: #38bdf8;
     }
 
-    /* 2. Базовые сбросы и шрифты */
     * {
       margin: 0;
       padding: 0;
@@ -35,7 +33,6 @@
       padding: 40px 20px;
     }
 
-    /* 3. Восстановленные стили шапки */
     header {
       display: flex;
       justify-content: space-between;
@@ -64,19 +61,24 @@
       max-width: 500px;
     }
 
-    /* 4. Восстановленный класс .badge, на котором обрывался код */
+    /* Обновленная кнопка Статистика */
     .badge {
       background: rgba(56, 189, 248, 0.1);
       border: 1px solid var(--accent2);
-      padding: 6px 14px;
+      padding: 8px 18px;
       border-radius: 20px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--accent2);
       white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    /* --- Далее идет твой оригинальный код --- */
+    .badge:hover {
+      background: rgba(56, 189, 248, 0.2);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
 
     .grid {
       display: grid;
@@ -146,6 +148,7 @@
       min-height: 20px;
       border-radius: 10px 10px 0 0;
       background: linear-gradient(180deg, var(--accent), #168f69);
+      transition: height 0.5s ease;
     }
 
     footer {
@@ -157,12 +160,91 @@
       font-size: 14px;
     }
 
+    /* Стили для всплывающего окна (Модалка) */
+    .modal-overlay {
+      display: none; /* Скрыто по умолчанию */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 30px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .modal-header h3 {
+      font-size: 20px;
+      color: var(--text);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .close-btn:hover {
+      color: var(--text);
+    }
+
+    .stats-list {
+      list-style: none;
+    }
+
+    .stats-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 16px;
+    }
+
+    .stats-list li:last-child {
+      border-bottom: none;
+    }
+
+    .year {
+      color: var(--muted);
+    }
+
+    .gdp-value {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .current-year {
+      color: var(--accent2);
+      font-weight: 700;
+    }
+
     @media (max-width: 800px) {
       .grid,
       .two {
         grid-template-columns: 1fr;
       }
-
       header {
         flex-direction: column;
         align-items: flex-start;
@@ -186,14 +268,16 @@
         </div>
       </div>
 
-      <div class="badge">Статистика</div>
+      <!-- Кнопка, открывающая модальное окно -->
+      <button class="badge" id="openStatsBtn">Статистика</button>
     </header>
 
     <div class="grid">
 
       <div class="card">
         <div class="label">ВВП</div>
-        <div class="value">≈ $300 млрд</div>
+        <!-- Обновленное значение ВВП -->
+        <div class="value">≈ $306 млрд</div>
       </div>
 
       <div class="card">
@@ -215,35 +299,17 @@
 
         <div class="card chartbox">
           <div class="bars">
-            <div class="barwrap">
-              <div class="bar" style="height:45%"></div>
-            </div>
-
-            <div class="barwrap">
-              <div class="bar" style="height:55%"></div>
-            </div>
-
-            <div class="barwrap">
-              <div class="bar" style="height:62%"></div>
-            </div>
-
-            <div class="barwrap">
-              <div class="bar" style="height:70%"></div>
-            </div>
-
-            <div class="barwrap">
-              <div class="bar" style="height:82%"></div>
-            </div>
-
-            <div class="barwrap">
-              <div class="bar" style="height:92%"></div>
-            </div>
+            <div class="barwrap"><div class="bar" style="height:45%"></div></div>
+            <div class="barwrap"><div class="bar" style="height:55%"></div></div>
+            <div class="barwrap"><div class="bar" style="height:62%"></div></div>
+            <div class="barwrap"><div class="bar" style="height:70%"></div></div>
+            <div class="barwrap"><div class="bar" style="height:82%"></div></div>
+            <div class="barwrap"><div class="bar" style="height:92%"></div></div>
           </div>
         </div>
 
         <div class="card">
           <div class="label">О Казахстане</div>
-
           <p class="subtitle" style="margin-top: 10px;">
             Казахстан является крупнейшей экономикой Центральной Азии.
             Важную роль в экономике страны играют энергетика,
@@ -255,11 +321,55 @@
       </div>
     </section>
 
+    <!-- Сохраненный футер -->
     <footer>
       Создано при поддержке 42 братухи и ChatGPT
     </footer>
 
   </div>
+
+  <!-- Всплывающее окно (Модалка) со статистикой -->
+  <div class="modal-overlay" id="statsModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>ВВП с 2020 года</h3>
+        <button class="close-btn" id="closeStatsBtn">&times;</button>
+      </div>
+      <ul class="stats-list">
+        <li><span class="year">2020 год:</span> <span class="gdp-value">$171.0 млрд</span></li>
+        <li><span class="year">2021 год:</span> <span class="gdp-value">$197.1 млрд</span></li>
+        <li><span class="year">2022 год:</span> <span class="gdp-value">$225.3 млрд</span></li>
+        <li><span class="year">2023 год:</span> <span class="gdp-value">$261.4 млрд</span></li>
+        <li><span class="year">2024 год:</span> <span class="gdp-value">$290.0 млрд</span></li>
+        <li><span class="year">2025 год:</span> <span class="gdp-value">$300.0 млрд</span></li>
+        <li><span class="year current-year">2026 год:</span> <span class="gdp-value current-year">$306.0 млрд</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Скрипт для работы кнопки -->
+  <script>
+    const modal = document.getElementById('statsModal');
+    const openBtn = document.getElementById('openStatsBtn');
+    const closeBtn = document.getElementById('closeStatsBtn');
+
+    // Открыть окно при клике на кнопку
+    openBtn.addEventListener('click', () => {
+      modal.style.display = 'flex';
+    });
+
+    // Закрыть окно при клике на крестик
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Закрыть окно при клике на темный фон вне окна
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
 
 </body>
 </html>
