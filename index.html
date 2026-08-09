@@ -61,7 +61,6 @@
       max-width: 500px;
     }
 
-    /* Обновленная кнопка Статистика */
     .badge {
       background: rgba(56, 189, 248, 0.1);
       border: 1px solid var(--accent2);
@@ -106,7 +105,7 @@
     }
 
     section {
-      margin-top: 28px;
+      margin-top: 40px;
     }
 
     section h2 {
@@ -151,6 +150,94 @@
       transition: height 0.5s ease;
     }
 
+    .forecast-container {
+      margin: 40px 0;
+    }
+
+    .forecast-tabs {
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .forecast-tabs button {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 10px 0;
+      font-size: 16px;
+      color: var(--muted);
+      border-bottom: 3px solid transparent;
+      transition: 0.3s;
+    }
+
+    .forecast-tabs button:hover {
+      color: var(--text);
+    }
+
+    .forecast-tabs button.active {
+      color: var(--text);
+      font-weight: bold;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      background: linear-gradient(145deg, #10243b, #0a1727);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 10px 20px;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    .data-table th, .data-table td {
+      padding: 14px 15px;
+      border-bottom: 1px solid var(--line);
+      text-align: right;
+    }
+
+    .data-table th:first-child, .data-table td:first-child {
+      text-align: left;
+    }
+
+    .data-table th {
+      color: var(--muted);
+      font-weight: 600;
+      vertical-align: middle;
+      font-size: 13px;
+    }
+
+    .data-table td {
+      font-size: 15px;
+    }
+    
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .sort-icon {
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
     footer {
       text-align: center;
       margin-top: 50px;
@@ -160,9 +247,8 @@
       font-size: 14px;
     }
 
-    /* Стили для всплывающего окна (Модалка) */
     .modal-overlay {
-      display: none; /* Скрыто по умолчанию */
+      display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
@@ -268,7 +354,6 @@
         </div>
       </div>
 
-      <!-- Кнопка, открывающая модальное окно -->
       <button class="badge" id="openStatsBtn">Статистика</button>
     </header>
 
@@ -276,7 +361,6 @@
 
       <div class="card">
         <div class="label">ВВП</div>
-        <!-- Обновленное значение ВВП -->
         <div class="value">≈ $306 млрд</div>
       </div>
 
@@ -321,14 +405,80 @@
       </div>
     </section>
 
-    <!-- Сохраненный футер -->
+    <div class="forecast-container">
+      <h2>Прогнозы ВВП Казахстана (МВФ)</h2>
+      
+      <div class="forecast-tabs">
+          <button class="tab-link active" onclick="openForecastTab(event, 'NominalGDP')">Номинальный ВВП</button>
+          <button class="tab-link" onclick="openForecastTab(event, 'PPPGDP')">ВВП по ППС</button>
+      </div>
+
+      <div id="NominalGDP" class="tab-content active">
+          <div class="table-responsive">
+              <table class="data-table">
+                  <thead>
+                      <tr>
+                          <th>Год <span class="sort-icon">↕</span></th>
+                          <th>ВВП номинальный<br>(текущие долл. США) <span class="sort-icon">↕</span></th>
+                          <th>Рост ВВП <span class="sort-icon">↕</span></th>
+                          <th>ВВП на душу<br>населения <span class="sort-icon">↕</span></th>
+                          <th>Изменение<br>населения <span class="sort-icon">↕</span></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>2027</td>
+                          <td>$385 966 000 000</td>
+                          <td>4,4%</td>
+                          <td>$18 547</td>
+                          <td>1,1%</td>
+                      </tr>
+                      <tr>
+                          <td>2028</td>
+                          <td>$410 771 000 000</td>
+                          <td>3,3%</td>
+                          <td>$19 543</td>
+                          <td>1,09%</td>
+                      </tr>
+                      <tr>
+                          <td>2029</td>
+                          <td>$439 140 000 000</td>
+                          <td>3,6%</td>
+                          <td>$20 686</td>
+                          <td>1,06%</td>
+                      </tr>
+                      <tr>
+                          <td>2030</td>
+                          <td>$468 832 000 000</td>
+                          <td>3,6%</td>
+                          <td>$21 866</td>
+                          <td>1,04%</td>
+                      </tr>
+                      <tr>
+                          <td>2031</td>
+                          <td>$501 684 000 000</td>
+                          <td>3,6%</td>
+                          <td>$23 166</td>
+                          <td>1,02%</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+      <div id="PPPGDP" class="tab-content">
+          <div class="table-responsive">
+              <p style="padding: 20px; color: var(--muted);">Здесь будут данные ВВП по ППС...</p>
+          </div>
+      </div>
+    </div>
+
     <footer>
       Создано при поддержке 42 братухи и ChatGPT
     </footer>
 
   </div>
 
-  <!-- Всплывающее окно (Модалка) со статистикой -->
   <div class="modal-overlay" id="statsModal">
     <div class="modal-content">
       <div class="modal-header">
@@ -347,29 +497,54 @@
     </div>
   </div>
 
-  <!-- Скрипт для работы кнопки -->
   <script>
     const modal = document.getElementById('statsModal');
     const openBtn = document.getElementById('openStatsBtn');
     const closeBtn = document.getElementById('closeStatsBtn');
 
-    // Открыть окно при клике на кнопку
     openBtn.addEventListener('click', () => {
       modal.style.display = 'flex';
     });
 
-    // Закрыть окно при клике на крестик
     closeBtn.addEventListener('click', () => {
       modal.style.display = 'none';
     });
 
-    // Закрыть окно при клике на темный фон вне окна
     window.addEventListener('click', (event) => {
       if (event.target === modal) {
         modal.style.display = 'none';
       }
     });
+
+    function openForecastTab(evt, tabName) {
+        var tabcontent = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+
+        var tablinks = document.getElementsByClassName("tab-link");
+        for (var i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
   </script>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111434664', 'ym');
+
+      ym(111434664, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111434664" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 
 </body>
 </html>
