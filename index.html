@@ -1,6 +1,82 @@
-color: var(--accent2);
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ВВП Казахстана - Статистика</title>
+  <style>
+    /* 1. Восстановленные CSS-переменные для темной темы */
+    :root {
+      --bg: #050d17;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --line: #1e293b;
+      --accent: #22c55e;
+      --accent2: #38bdf8;
+    }
+
+    /* 2. Базовые сбросы и шрифты */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* 3. Восстановленные стили шапки */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+
+    .kicker {
+      color: var(--accent2);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 500px;
+    }
+
+    /* 4. Восстановленный класс .badge, на котором обрывался код */
+    .badge {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--accent2);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent2);
       white-space: nowrap;
     }
+
+    /* --- Далее идет твой оригинальный код --- */
 
     .grid {
       display: grid;
@@ -90,6 +166,7 @@ color: var(--accent2);
       header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 20px;
       }
     }
   </style>
@@ -167,7 +244,7 @@ color: var(--accent2);
         <div class="card">
           <div class="label">О Казахстане</div>
 
-          <p class="subtitle">
+          <p class="subtitle" style="margin-top: 10px;">
             Казахстан является крупнейшей экономикой Центральной Азии.
             Важную роль в экономике страны играют энергетика,
             промышленность, добыча полезных ископаемых,
